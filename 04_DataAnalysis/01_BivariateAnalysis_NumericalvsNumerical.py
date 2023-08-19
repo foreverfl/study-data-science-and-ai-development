@@ -21,31 +21,33 @@ df['Date'] = pd.to_datetime(df['Date'])  # 'Date' 열을 datetime 형식으로 �
 print('데이터')
 print(df.head())
 
-plt.scatter(x='AAPL', y='MSFT', data=df)
-plt.title('Scatter Plot of AAPL vs MSFT')
-plt.legend()
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+
+# Scatter Plot
+axes[0, 0].scatter(x='AAPL', y='MSFT', data=df)
+axes[0, 0].set_title('Scatter Plot of AAPL vs MSFT')
+
+# Regplot
+sns.regplot(x='AAPL', y='MSFT', data=df, ax=axes[0, 1])
+axes[0, 1].set_title('Reg Plot of AAPL vs MSFT')
+
+# P-value and correlation coefficient
+corr_coef, p_value = stats.pearsonr(df['AAPL'], df['MSFT'])
+axes[1, 0].text(
+    0.5, 0.5, f'Corr Coef: {corr_coef:.2f}\nP-value: {p_value:.2f}', ha='center', fontsize=12)
+
+# Correlation Matrix
+correlation_matrix = df.corr()
+sns.heatmap(correlation_matrix, annot=True, ax=axes[1, 1])
+axes[1, 1].set_title('Heatmap of Correlation Matrix')
+
+plt.tight_layout()
+plt.show()
+
+# Jointplot
+sns.jointplot(x='AAPL', y='MSFT', data=df, kind='scatter')
 plt.show()
 
 # pairplot
 sns.pairplot(df)
-plt.show()
-
-# jointplot
-sns.jointplot(x='AAPL', y='MSFT', data=df, kind='scatter')
-plt.show()
-
-# regplot
-sns.regplot(x='AAPL', y='MSFT', data=df)
-plt.show()
-
-# p-value
-print(stats.pearsonr(df['AAPL'], df['MSFT']))
-
-# 한 번에 상관계수 구하기
-correlation_matrix = df.corr()
-print("Correlation Matrix:")
-print(correlation_matrix)
-
-# heatmap
-sns.heatmap(correlation_matrix, annot=True)
 plt.show()
