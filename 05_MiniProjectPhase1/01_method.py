@@ -51,3 +51,14 @@ df = pd.DataFrame({'Age': ['20', '25', '30']})
 df['Age'] = df['Age'].astype(int)
 print('\nastype()')
 print(df.dtypes)
+
+# isnull().sum(): 결측치 확인하기
+df1 = pd.DataFrame({
+    'temperature': [25, 23, 21, np.nan, 22],
+    'humidity': [60, 55, np.nan, 58, 57]
+})
+
+# 결측치 확인하기
+missing_values = df1.isnull().sum()
+print("\nisnull().sum()")
+print(missing_values)
