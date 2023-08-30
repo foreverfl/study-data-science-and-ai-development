@@ -78,24 +78,22 @@
 > > * 학습 데이터보다 평가 데이터에 대한 성능이 매우 좋거나, 모든 데이터에 대한 성능이 매우 안 좋은 경우.
 
 ### 모델링 코드 구조
-> 1. 불러오기
-
-> 2. 선언하기
+> 1. 선언하기
 ```python
 model = LinearRegression()
 ```
 
-> 3. 학습하기
+> 2. 학습하기
 ```python
 model.fit(x_train, y_train)
 ```
 
-> 4. 예측하기
+> 3. 예측하기
 ```python
 y_pred = model.predict(x_test)
 ```
 
-> 5. 평가하기
+> 4. 평가하기
 ```python
 mean_absolute_error(y_test, y_pred)
 ```
@@ -113,13 +111,13 @@ mean_absolute_error(y_test, y_pred)
 
 ### 회귀 모델 평가 지표 
 > - MSE (Mean Squared Error): 실제 값과 예측 값의 차이를 제곱한 값들의 평균. 이 값이 작을수록 좋음.
-> \( MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)
+> $$ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
 > - RMSE (Root Mean Squared Error): MSE의 제곱근. MSE에 제곱근을 취하므로, 값의 단위가 원래 값과 같아짐.
-> \( RMSE = \sqrt{MSE} \)
+> $$ RMSE = \sqrt{MSE} $$
 > - MAE (Mean Absolute Error): 실제 값과 예측 값의 차이의 절대값의 평균. MSE나 RMSE보다 이상치에 덜 민감함.
-> \( MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| \)
+> $$ MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| $$
 > - MAPE (Mean Absolute Percentage Error): 실제 값 대비 예측 값의 오차의 절대값의 평균을 백분율로 나타냄.
-> \( MAPE = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100 \)
+> $$ MAPE = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100 $$
 
 ### 오차와 결정 계수(R-Squared)
 > - SST (Total Sum of Squares): 실제 값과 그 평균 간의 제곱합. 총 변동성. 허용된(?) 오차.
