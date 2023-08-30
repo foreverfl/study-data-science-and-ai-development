@@ -111,35 +111,22 @@ mean_absolute_error(y_test, y_pred)
 
 ### 회귀 모델 평가 지표 
 > - MSE (Mean Squared Error): 실제 값과 예측 값의 차이를 제곱한 값들의 평균. 이 값이 작을수록 좋음.
-$$ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
 > - RMSE (Root Mean Squared Error): MSE의 제곱근. MSE에 제곱근을 취하므로, 값의 단위가 원래 값과 같아짐.
-$$ RMSE = \sqrt{MSE} $$
 > - MAE (Mean Absolute Error): 실제 값과 예측 값의 차이의 절대값의 평균. MSE나 RMSE보다 이상치에 덜 민감함.
-$$ MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| $$
 > - MAPE (Mean Absolute Percentage Error): 실제 값 대비 예측 값의 오차의 절대값의 평균을 백분율로 나타냄.
-$$ MAPE = \frac{1}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right| \times 100 $$
 
 ### 오차와 결정 계수(R-Squared)
 > - SST (Total Sum of Squares): 실제 값과 그 평균 간의 제곱합. 총 변동성. 허용된(?) 오차.
-> \( SST = \sum_{i=1}^{n} (y_i - \bar{y})^2 \)
 > - SSR (Sum of Squares due to Regression): 예측 값의 평균과 실제 값 간의 제곱합. 예측 모델에 의한 변동성. 회귀식이 잡아낸 오차.
-> \( SSR = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 \)
 > - SSE (Sum of Squared Errors): 실제 값과 예측 값 간의 제곱합. 남은 변동성. 회귀식이 잡아내지 못한 오차.
-> \( SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \)
 > - R-Squared (결정 계수): SSR/SST로 계산하며, 모델이 데이터를 얼마나 잘 설명하는지 나타내는 지표. 값이 1에 가까울수록 좋음.
-> \( R^2 = 1 - \frac{SSE}{SST} \)
 
 ### 분류 모델 평가 지표
 > - **Accuracy (정확도)**: 전체 샘플 중 올바르게 예측한 샘플의 비율.
-> \( \text{Accuracy} = \frac{\text{True Positive} + \text{True Negative}}{\text{Total Samples}} \)
 > - **Precision (정밀도)**: Positive라고 예측한 것 중에서 실제로 Positive인 것의 비율. 예를 들어, 암 진단 테스트가 얼마나 정밀한지, 즉 거짓 긍정(False Positive)의 수를 줄이는 것에 중점.
-> \( \text{Precision} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}} \)
 > - **Recall (재현율)**: 실제 Positive 중에서 모델이 Positive라고 예측한 것의 비율. 예를 들어, 모든 암 환자를 찾아내는 것에 중점을 둠. 즉, 거짓 부정(False Negative)의 수를 줄이는데 중점.
-> \( \text{Recall} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} \)
 > - **Specificity (특이도)**: 실제 Negative 중에서 모델이 Negative라고 예측한 것의 비율.
-> \( \text{Specificity} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}} \)
 > - **F1-Score**: Precision과 Recall의 조화 평균. 두 지표를 균형있게 반영할 때 사용.
-> \( \text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \)
 
 ### Linear Regression
 > - 단순 회귀
