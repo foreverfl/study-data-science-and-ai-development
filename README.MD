@@ -10,13 +10,14 @@
 - [Chapter04. 데이터 분석](#Chapter04-데이터-분석)
 - [Chapter05. 웹 크롤링](#Chapter05-웹-크롤링)
 - [Chapter06. 머신러닝](#Chapter06-머신러닝)
-- [Chapter07. 시각지능 딥러닝](#Chapter07-시각지능-딥러닝)
-- [Chapter08. 언어지능 딥러닝](#Chapter08-언어지능-딥러닝)
-- [Chapter09. AI모델 평가](#Chapter09-AI모델-평가)
-- [Chapter10. WES/WAS/DB](#Chapter10-WES/WAS/DB)
-- [Chapter11. 가상화 클라우드](#Chapter11-가상화-클라우드)
-- [Chapter12. SQL](#Chapter12-SQL)
-- [Chapter13. Django](#Chapter13-Django)
+- [Chapter07. 딥러닝](#Chapter07-딥러닝)
+- [Chapter08. 시각지능 딥러닝](#Chapter08-시각지능-딥러닝)
+- [Chapter09. 언어지능 딥러닝](#Chapter09-언어지능-딥러닝)
+- [Chapter10. AI모델 평가](#Chapter10-AI모델-평가)
+- [Chapter11. 웹 프로그래밍](#Chapter11-웹-프로그래밍)
+- [Chapter12. 가상화 클라우드](#Chapter12-가상화-클라우드)
+- [Chapter13. SQL](#Chapter13-SQL)
+- [Chapter14. Django](#Chapter14-Django)
 
 ## Chapter01. Git
 ### 원칙 
@@ -146,11 +147,11 @@ mean_absolute_error(y_test, y_pred)
 ### Logistic Regreesion
 
 
-
-## Chapter07. 시각지능 딥러닝
-## Chapter08. 언어지능 딥러닝
-## Chapter09. AI모델 평가
-## Chapter10. WES/WAS/DB
-## Chapter11. 가상화 클라우드
-## Chapter12. SQL
-## Chapter13. Django
+## Chapter07. 딥러닝
+## Chapter08. 시각지능 딥러닝
+## Chapter09. 언어지능 딥러닝
+## Chapter10. AI모델 평가
+## Chapter11. 웹 프로그래밍
+## Chapter12. 가상화 클라우드
+## Chapter13. SQL
+## Chapter14. Django
