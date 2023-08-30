@@ -4,19 +4,19 @@
 - 에이블스쿨 수강한 내용을 바탕으로 GPT4의 도움을 받아 만든 학습자료입니다. 데이터는 캐글, Yfinance의 자료를 사용했습니다. 전체 내용을 담지는 않았고, 제가 정리하고 싶은 부분들만 정리했습니다.
 
 ## 목차
-- [Chapter01. Git](#Chapter01.-Git)
-- [Chapter02. Python](#Chapter02.-Python)
-- [Chapter03. 데이터 처리](#Chapter03.-데이터-처리)
-- [Chapter04. 데이터 분석](#Chapter04.-데이터-분석)
-- [Chapter05. 웹 크롤링](#Chapter05.-웹-크롤링)
-- [Chapter06. 머신러닝](#Chapter06.-머신러닝)
-- [Chapter07. 시각지능 딥러닝](#Chapter07.-시각지능-딥러닝)
-- [Chapter08. 언어지능 딥러닝](#Chapter08.-언어지능-딥러닝)
-- [Chapter09. AI모델 평가](#Chapter09.-AI모델-평가)
-- [Chapter10. WES/WAS/DB](#Chapter10.-WES/WAS/DB)
-- [Chapter11. 가상화 클라우드](#Chapter11.-가상화-클라우드)
-- [Chapter12. SQL](#Chapter12.-SQL)
-- [Chapter13. Django](#Chapter13.-Django)
+- [Chapter01. Git](#Chapter01-Git)
+- [Chapter02. Python](#Chapter02-Python)
+- [Chapter03. 데이터 처리](#Chapter03-데이터-처리)
+- [Chapter04. 데이터 분석](#Chapter04-데이터-분석)
+- [Chapter05. 웹 크롤링](#Chapter05-웹-크롤링)
+- [Chapter06. 머신러닝](#Chapter06-머신러닝)
+- [Chapter07. 시각지능 딥러닝](#Chapter07-시각지능-딥러닝)
+- [Chapter08. 언어지능 딥러닝](#Chapter08-언어지능-딥러닝)
+- [Chapter09. AI모델 평가](#Chapter09-AI모델-평가)
+- [Chapter10. WES/WAS/DB](#Chapter10-WES/WAS/DB)
+- [Chapter11. 가상화 클라우드](#Chapter11-가상화-클라우드)
+- [Chapter12. SQL](#Chapter12-SQL)
+- [Chapter13. Django](#Chapter13-Django)
 
 ## Chapter01. Git
 ### 원칙 
