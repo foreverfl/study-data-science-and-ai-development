@@ -17,7 +17,7 @@ df_fill_mean = df.fillna(df.mean())
 print('\n평균값으로 NaN 채우기')
 print(df_fill_mean)
 
-# 최빈값으로 NaN 채우기 (mode()는 Series를 반환하기 때문에 [0]을 사용하여 값에 접근)
+# 최빈값으로 NaN 채우기 (mode()는 동일한 값을 여러개 가질 수 있기 때문에 [0]을 사용하여 값에 접근)
 # mode(): 해당 열의 최빈값을 시리즈 형태로 반환함
 df_fill_mode = df.apply(lambda x: x.fillna(x.mode()[0]))
 print('\n최빈값으로 NaN 채우기')

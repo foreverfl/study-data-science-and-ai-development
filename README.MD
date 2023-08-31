@@ -138,13 +138,55 @@ mean_absolute_error(y_test, y_pred)
 > > * 여러 독립변수가 종속변수에 영향을 미침: 단순 회귀가 1개의 독립 변수만을 다루는 반면, 다중 회귀는 2개 이상의 독립 변수를 고려함.
 > > * 회귀 계수 확인: 다중 회귀에서는 여러 독립 변수가 있으므로, 각 독립 변수에 대한 회귀 계수(coef_)도 여럿이 됨. 이 회귀 계수들을 통해 어떤 독립 변수가 종속 변수에 더 큰 영향을 미치는지 알 수 있음.
 
-### K-Nearest Neighbor (K-Nearest-Neighbor)
+### K-Nearest Neighbor
 > - k(탐색하는 이웃 개수)에 따라 데이터를 다르게 예측할 수도 있기 때문에 적절한 k값을 찾아야 하는 것이 중요.
 > - 정규화나 표준화를 통해 스케일링을 진행해야 함.
 
 ### Decision Tree
+> - 분류와 회귀 모두에 사용되는 지도학습 알고리즘.
+> - 스케일링 등의 전처리 영향도가 크지 않음.
+> - 훈련 데이터에 댛나 제약 사항이 거의 없는 유연한 모델.
+> - 과적합으로 모델 성능이 떨어지기 쉬움.
+> - 트리 깊이를 제한하는 튜닝이 필요함.
+> - 주요 하이퍼파라미터
+> > * **max_depth**: 트리의 최대 깊이(기본값: None)
+> > * **min_samples_split**: 노드를 분할하기 위한 최소한의 샘플 개수(기본값: 2)
+> > * **min_samples_leaf**: 리프노드가 되기 위한 최소한의 샘플 수(기본값: 1)
+> > * **max_feature**: 최선의 분할을 위해 고려할 Feature 수(기본값 None)
+> > * **max_leaf_node**: 리프토드 최대 개수
+> - 모델 구현
+> > * **회귀 모델**: ``sklearn.tree,DecisionTreeRegressor``, ``sklearn.metrics.mean_absolute_error``, ``sklearn.metrics.r2_score``
+> > * **분류 모델**: ``sklearn.tree.DecisionTreeClassifier``, ``sklearn.metrics.confusion_matrix``, ``sklearn.metrics.classification_report``
 
 ### Logistic Regreesion
+> - 시그모이드(sigmoid) 함수라고도 부름.
+> - 확률 값 p는 선형 판별식 값이 커지면 1, 작아지면 0에 가까운 값이 됨.
+> - 기본적으로 확률 값 0.5를 임계값(threshold)로 하여 이보다 크면 1, 그렇지 않으면 0으로 분류함.
+> - 분류 모델에만 사용할 수 있음.
+
+### K-Fold Cross Validation
+> - 모든 데이터가 평가에 한 번, 학습에 k-1번 사용됨.
+> - K개의 분할(Fold)에 댛나 성능을 예측해서, 평균과 표준편차를 계산하여, 성능을 일반화함.
+> - K는 최소 2개가 되어야함.
+> - 장점
+> > * 모든 데이터를 학습과 평가에 사용할 수 있음.
+> > * 반복 학습과 평가를 통해 정확도를 향상시킬 수 있음.
+> > * 데이터가 부족해서 발생하는 과소적합 문제를 방지 가능.
+> > * 평가에 사용되는 데이터의 편향을 막을 수 있음.
+> > * 좀 더 일반화 된 모델을 만들 수 있음.
+> - 단점
+> > * 반복 횟수가 많아서 모델 학습과 평가에 많은 시간이 소요됨.
+> - 사용 방법
+> > * 모델 선언 후 cross_val_score(model, x_train, y_train, cv) 형태로 사용함.
+> > * 기본 분할 개수(cv) 값은 5이며, 필요에 따라 적절히 조절할 수 있음.
+> > * cross_val_score 함수 결과로 얻은 성능들의 평균을 모델의 성능으로 봄.
+> > * 실제 평가에서 얻은 성능은 이와 다를 수 있음.
+
+### Hyperparameter 튜닝
+
+### Random Search, Grid Search
+
+### Ensemble
 
 
 ## Chapter07. 딥러닝
