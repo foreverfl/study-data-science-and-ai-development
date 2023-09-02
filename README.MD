@@ -183,10 +183,94 @@ mean_absolute_error(y_test, y_pred)
 > > * 실제 평가에서 얻은 성능은 이와 다를 수 있음.
 
 ### Hyperparameter 튜닝
+> - 알고리즘을 사용해 모델링 할 때 모델 성능을 최적화하기 위해 조절할 수 있는 매개변수.
+> > * KNN의 n_neighbors, Decision Tree의 max_depth.
+> - 튜닝하는 방법에 정답은 없음.
 
-### Random Search, Grid Search
+### Grid Search
+> - 성능을 테스트할 파마미터 값의 범위를 지정.(딕셔너리 형태)
+> - 위의 파라미터 값 범위를 모두 사용하는 Grid Search 모델 선언 후 학습.
+> - 학습 데이터에 대해 가장 좋은 성능을 보인 파라미터 값으로 자동으로 학습함.
+> - 이후 예측 및 평가 과정을 바로 진행하면 됨.
+> - 예제 코드
+```python
+# 파라미터 선언
+param_grid = {'max_depth': range(1, 51)}  # 딕셔너리 형태
+
+# 기본 모델 선언
+model_dt = DecisionTreeRegressor(random_state=1)
+
+# Grid Search 선언
+grid_search = GridSearchCV(model_dt,  # 기본 모델
+                           param_grid,  # 파라미터 범위
+                           cv=5,        # K-Fold 개수
+                           scoring='r2')  # 평가 지표
+
+# 학습
+grid_search.fit(x_train, y_train)
+
+# 결과 출력
+print("Grid Search 최적 파라미터: ", grid_search.best_params_)
+```
+
+### Random Search
+> - 성능을 테스트할 파마미터 값의 범위를 지정.(딕셔너리 형태)
+> - 위의 파라미터 값 범위에서 몇 개 성택할 지 정하여 Random Search 모델 선언 후 학습.
+> - 학습 데이터에 대해 가장 좋은 성능을 보인 파라미터 값으로 자동으로 학습.
+> - 이후에 예측 및 평가 과정을 바로 진행하면 됨.
+> - 예제 코드
+```python
+# 파라미터 선언
+param = {'max_depth': range(1, 51)} # 딕셔너리 형태
+
+# 기본 모델 선언 
+model_dt = DecisionTreeRegressor(random_state=1)
+
+# Random Search 선언
+  # cv=5
+  # n_iter=20
+  # scoring='r2'
+model = RandomizedSearchCV(model_dt ,    # 기본 모델
+                           param,        # 파라미터 범위
+                           cv=5,         # K-Fold 개수
+                           n_iter=20,    # 랜덤하게 선택을 파라미터(조합) 개수
+                           scoring='r2') # 평가 지표
+
+# 학습
+random_search.fit(x_train, y_train)
+
+# 결과 출력
+print("Random Search 최적 파라미터: ", random_search.best_params_)
+```
 
 ### Ensemble
+> - 여러 개의 모델을 결합하여 훨씬 강력한 모델을 생성하는 기법.
+> - 보팅
+> > * 여러 모델들의 예측 결과를 투표를 통해 최종 예측 결과를 결정하는 방법.
+> > * 하드 보팅: 다수 모델이 예측한 값이 최종 결괏값.
+> > * 스프트 보팅: 모든 모델이 예측한 레이블 값의 결정 확률 평균을 구한 뒤 가장 확률이 높은 값을 최종 선택.
+
+> - 배깅(Bootstrap Aggregating)
+> > * 데이터로부터 부트스트랩 한 데이터로 모델들을 학습시킨 후, 모델들의 예측 결과를 집계해 최종 결과를 얻는 방법.
+> > * 같은 유형의 알고리즘 기반 모델들을 사용.
+> > * 데이터 분할 시 중복을 허용.(복원 랜덤 샘플링 방식)
+> > * 범주형 데이터는 투표 방식으로 결과를 집계.
+> > * 연속형 데이터는 평균으로 결과를 집계.
+> > * 랜덤 포레스트
+> > > + 여러 Decision Tree 모델이 전체 데이터에서 배깅 방식으로 각자의 데이터 샘플링.
+> > > + 모델들이 개별적으로 학습을 수행한 뒤 모든 결과를 집계하여 최종 결과 선정.
+
+> - 부스팅
+> > * 같은 유형의 알고리즘 기반 모델에 여러 개에 순차적으로 학습을 수행.
+> > * 이전 모델이 제대로 예측하지 못한 데이터에 대해서 가중치를 부여하여 다음 모델이 학습과 예측을 진행하는 방법.
+> > * 예측 성능이 뛰어나 앙상블 학습을 주도함.
+> > * 배깅에 비해 성능이 좋지만, 속도가 느리고 과적합 발생 가능성이 있음.
+> > * 대표적인 부스팅 알고리즘: XGBoost, LightGBM
+
+> - 스태킹
+> > * 여러 모델의 예측 값을 최종 모델의 학습 데이터로 사용하여 예측하는 방법.
+> > * 현실 모델에서는 많이 사용되지 않으며, 캐글 같은 미세한 성능 차이로 승부를 결정하는 대회에서 사용됨.
+> > * 기본 모델로 4개 이상을 선택해야 좋은 결과를 기대할 수 있음.
 
 
 ## Chapter07. 딥러닝
