@@ -65,7 +65,7 @@ model = XGBClassifier(max_depth=5)
 cv_score = cross_val_score(model, x_train_s, y_train, cv=10)
 result['XGBClassifier'] = cv_score.mean()
 
-model = LGBMClassifier(max_depth=5)
+model = LGBMClassifier()
 cv_score = cross_val_score(model, x_train_s, y_train, cv=10)
 result['LGBMClassifier'] = cv_score.mean()
 
