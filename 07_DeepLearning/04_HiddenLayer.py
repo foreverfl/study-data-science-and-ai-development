@@ -28,7 +28,7 @@ X = tf.keras.Input(shape=[x.shape[1]])
 # 128: 뉴런의 개수
 # activation='swish': 활성화 함수는 노드의 출력 값을 변환하는 함수
 H = tf.keras.layers.Dense(128, activation='swish')(X)
-Y = tf.keras.layers.Dense(1)(X)
+Y = tf.keras.layers.Dense(1)(H)
 model = tf.keras.Model(X, Y)
 model.compile(loss="mse")
 
