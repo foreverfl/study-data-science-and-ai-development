@@ -347,6 +347,9 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > > - **Epochs 설정**: Epochs의 수를 설정하여, 모델이 데이터를 몇 번 반복하여 볼지 결정함. Epochs가 너무 많으면 오버피팅의 위험이 있으며, 너무 적으면 언더피팅의 위험이 있음.
 > > - **Batch Size 설정**: batch_size를 설정하여, 한 번의 업데이트에 사용할 데이터 샘플의 수를 결정함. 작은 batch_size는 모델을 더 자세하게 학습시키지만, 너무 작으면 학습 시간이 길어지고 안정성이 떨어질 수 있음.
 
+## 자연어 처리 분류
+> - classification, generation, Q&A, Translation, summarizaion
+
 ## Chapter08. 시각지능 딥러닝
 ## Chapter09. 언어지능 딥러닝
 ## Chapter10. AI모델 평가
