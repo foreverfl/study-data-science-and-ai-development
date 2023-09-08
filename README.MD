@@ -347,8 +347,12 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > > - **Epochs 설정**: Epochs의 수를 설정하여, 모델이 데이터를 몇 번 반복하여 볼지 결정함. Epochs가 너무 많으면 오버피팅의 위험이 있으며, 너무 적으면 언더피팅의 위험이 있음.
 > > - **Batch Size 설정**: batch_size를 설정하여, 한 번의 업데이트에 사용할 데이터 샘플의 수를 결정함. 작은 batch_size는 모델을 더 자세하게 학습시키지만, 너무 작으면 학습 시간이 길어지고 안정성이 떨어질 수 있음.
 
-## 자연어 처리 분류
-> - classification, generation, Q&A, Translation, summarizaion
+## VectorDB 
+> - **벡터 데이터베이스 (Vector DB)**: 이는 단어, 문장 또는 문서와 같은 텍스트 데이터를 벡터 형태로 저장한 데이터베이스. 각 벡터는 텍스트의 의미나 특성을 나타내며, 이를 활용해서 유사한 항목을 빠르게 검색 가능.
+> - **임베딩 함수 (Embedding Function)**: 이 함수는 텍스트 데이터를 벡터로 변환하는 역할. 예를 들어, "사과"라는 단어를 [0.1, 0.3, 0.5, ...] 같은 벡터로 변환 가능. 임베딩은 보통 딥러닝 모델을 통해 학습됨. 이 함수를 통해 얻은 벡터는 벡터 데이터베이스에 저장될 수 있음.
+> - **GPT (Generative Pre-trained Transformer)**: 이는 텍스트를 생성하거나 이해하는 데 사용되는 딥러닝 모델 중 하나. GPT는 임베딩 함수의 한 형태로도 볼 수 있음. 즉, GPT 모델은 문장을 입력 받아 내부적으로 벡터 형태로 변환한 후, 다양한 NLP 작업을 수행 가능.
+> - pip install chromadb를 설치 도중에 오류가 걸릴 도중 참고: https://github.com/chroma-core/chroma/issues/189
+
 
 ## Chapter08. 시각지능 딥러닝
 ## Chapter09. 언어지능 딥러닝
