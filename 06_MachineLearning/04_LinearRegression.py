@@ -43,7 +43,7 @@ mse = mean_squared_error(y_test, y_pred)  # MSE(Mean Squared Error)
 rmse = np.sqrt(mse)  # RMSE(Root Mean Squared Error)
 mape = np.mean(np.abs((y_test - y_pred) / y_test)) * \
     100  # MAPE(Mean Absolute Percentage Error)
-r2 = r2_score(y_test, y_pred)  # R2-Score)
+r2 = r2_score(y_test, y_pred)  # R2-Score
 
 print(f"MAE (Mean Absolute Error): {mae}")
 print(f"MSE (Mean Squared Error): {mse}")

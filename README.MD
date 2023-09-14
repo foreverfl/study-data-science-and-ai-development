@@ -188,7 +188,7 @@ mean_absolute_error(y_test, y_pred)
 > - 튜닝하는 방법에 정답은 없음.
 
 ### Grid Search
-> - 성능을 테스트할 파마미터 값의 범위를 지정.(딕셔너리 형태)
+> - 성능을 테스트할 파라미터 값의 범위를 지정.(딕셔너리 형태)
 > - 위의 파라미터 값 범위를 모두 사용하는 Grid Search 모델 선언 후 학습.
 > - 학습 데이터에 대해 가장 좋은 성능을 보인 파라미터 값으로 자동으로 학습함.
 > - 이후 예측 및 평가 과정을 바로 진행하면 됨.
@@ -316,7 +316,7 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > - **KLDivergence (Kullback-Leibler Divergence)**: 두 확률 분포의 차이를 측정. 보통 생성 모델이나 강화 학습에서 사용됨.
 > - **Cosine Similarity Loss**: 벡터 간의 코사인 유사도를 기반으로 손실을 계산. 텍스트 분류나 추천 시스템에서 종종 사용됨.
 
-## 배치 정규화(BatchNormalization)
+### 배치 정규화(BatchNormalization)
 > - 개념: 딥러닝 모델을 훈련할 때 자주 사용되는 기법. 이 기법의 주 목적은 모델이 더 빠르고 안정적으로 학습할 수 있도록 돕는 것.
 > - 기본 아이디어
 > > * 데이터가 네트워크를 통과하면서 각 레이어에서 변환. 이 변환 때문에 데이터의 분포도 바뀌는데, 이를 '내부 공변량 변화(Internal Covariate Shift)'라고 함.
@@ -329,7 +329,7 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > > * 가중치 초기화에 덜 민감: 정규화를 통해 데이터 분포가 일정하게 유지되기 때문에, 가중치 초기화에 대한 문제를 완화시킴.
 > > * 레이어와 모델 구조에 다양성: 더 깊은 네트워크나 복잡한 구조를 사용할 수 있게 도와줌.
 
-## 히든 레이어(Hidden Layer)
+### 히든 레이어(Hidden Layer)
 > - 개념: 딥러닝 모델, 특히 인공 신경망에서 입력 레이어와 출력 레이어 사이에 위치한 레이어. 이 레이어들이 "숨겨져 있다(hidden)"고 표현되는 이유는, 이들은 직접적인 입력이나 출력과 관련이 없기 때문.
 > - 역할과 특징
 > > * 추상화: 히든 레이어는 복잡한 문제를 해결하기 위해 더 높은 수준의 추상화를 수행. 예를 들어, 이미지를 인식하는 문제에서 첫 번째 히든 레이어는 보통 엣지나 색상과 같은 저수준 특징을 잡아내고, 뒷 단의 레이어들이 이런 정보를 조합하여 더 복잡한 특징을 추출함.
@@ -337,7 +337,7 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > > * 매개변수(가중치) 학습: 히든 레이어에는 많은 수의 뉴런(노드)가 있을 수 있고, 각 뉴런은 자신의 가중치와 편향을 가짐. 이 매개변수들은 학습 과정에서 최적화됨.
 > > * 모델의 복잡성: 히든 레이어가 많아질수록 모델은 더 복잡해짐. 이는 더 복잡한 문제를 해결할 수 있지만, 오버피팅(과적합)의 위험도 증가시킴.
 
-## 머신러닝 플로우
+### 머신러닝 플로우
 > 1. **독립변수와 종속변수 지정**: 독립변수(X)와 종속변수(Y)를 설정하고, 이를 바탕으로 모델을 학습시킴. 여기서 사용될 손실 함수(loss)도 지정하여, 이 값을 최소화하는 방향으로 모델이 학습됨.
 > 2. **모델 구성**: 필요에 따라 하나 이상의 Hidden Layer를 모델에 추가함.
 > > - **활성화 함수 선택**: Hidden Layer에 활성화 함수(activation)를 선택하여 추가할 수 있음. 활성화 함수는 모델이 복잡한 문제와 다양한 데이터 분포에 대응할 수 있게 해줌.
@@ -347,7 +347,7 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 > > - **Epochs 설정**: Epochs의 수를 설정하여, 모델이 데이터를 몇 번 반복하여 볼지 결정함. Epochs가 너무 많으면 오버피팅의 위험이 있으며, 너무 적으면 언더피팅의 위험이 있음.
 > > - **Batch Size 설정**: batch_size를 설정하여, 한 번의 업데이트에 사용할 데이터 샘플의 수를 결정함. 작은 batch_size는 모델을 더 자세하게 학습시키지만, 너무 작으면 학습 시간이 길어지고 안정성이 떨어질 수 있음.
 
-## VectorDB 
+### VectorDB 
 > - **벡터 데이터베이스 (Vector DB)**: 이는 단어, 문장 또는 문서와 같은 텍스트 데이터를 벡터 형태로 저장한 데이터베이스. 각 벡터는 텍스트의 의미나 특성을 나타내며, 이를 활용해서 유사한 항목을 빠르게 검색 가능.
 > - **임베딩 함수 (Embedding Function)**: 이 함수는 텍스트 데이터를 벡터로 변환하는 역할. 예를 들어, "사과"라는 단어를 [0.1, 0.3, 0.5, ...] 같은 벡터로 변환 가능. 임베딩은 보통 딥러닝 모델을 통해 학습됨. 이 함수를 통해 얻은 벡터는 벡터 데이터베이스에 저장될 수 있음.
 > - **GPT (Generative Pre-trained Transformer)**: 이는 텍스트를 생성하거나 이해하는 데 사용되는 딥러닝 모델 중 하나. GPT는 임베딩 함수의 한 형태로도 볼 수 있음. 즉, GPT 모델은 문장을 입력 받아 내부적으로 벡터 형태로 변환한 후, 다양한 NLP 작업을 수행 가능.
@@ -355,6 +355,122 @@ print("Random Search 최적 파라미터: ", random_search.best_params_)
 
 
 ## Chapter08. 시각지능 딥러닝
+### TensorFlow 모델 구성 방식
+#### Sequential API
+> - 간단하고 직선적인 모델 구조를 가짐: 각 레이어가 정확히 하나의 입력과 하나의 출력을 가짐.
+> - 제한적인 유연성: 복잡한 아키텍처(여러 입력, 여러 출력, 공유 레이어, 잔차 연결 등)를 구현하기 어려움.
+> - **사용 용도**: 단순한 Feed-Forward 네트워크 같은 간단한 모델에 주로 사용됨.
+> - 예시
+```python
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(784,)),
+    Dense(64, activation='relu'),
+    Dense(10, activation='softmax')
+])
+```
+
+#### Functional API
+> - 다양한 모델 구조를 가질 수 있음: 각 레이어가 여러 입력과 여러 출력을 가질 수 있음.
+> - 고도의 유연성: 다중 입력/출력, 공유 레이어, 잔차 연결 등 복잡한 모델 아키텍처를 쉽게 구현할 수 있음.
+> - 예시
+```python
+from tensorflow.keras.layers import Input, Dense, concatenate
+from tensorflow.keras.models import Model
+
+input1 = Input(shape=(784,))
+x1 = Dense(64, activation='relu')(input1)
+
+input2 = Input(shape=(784,))
+x2 = Dense(64, activation='relu')(input2)
+
+merged = concatenate([x1, x2])
+output = Dense(10, activation='softmax')(merged)
+
+model = Model(inputs=[input1, input2], outputs=output)
+```
+
+#### Custom Model Subclassing (Custom API)
+> - 최고의 유연성을 제공: tf.keras.Model 클래스를 상속받아 원하는 모델을 처음부터 만들 수 있음.
+> - 복잡한 연산과 레이어 구조를 사용 가능: 쉽게 커스텀 로직을 추가 가능.
+> - 예시
+```python
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense
+
+class CustomModel(Model):
+    def __init__(self):
+        super(CustomModel, self).__init__()
+        self.dense1 = Dense(64, activation='relu')
+        self.dense2 = Dense(10, activation='softmax')
+
+    def call(self, inputs):
+        x = self.dense1(inputs)
+        return self.dense2(x)
+
+model = CustomModel()
+```
+
+### Filter or Kernel
+> - **정의**: CNN (Convolutional Neural Network)에서는 필터라고 불리는 작은 크기의 행렬을 사용. 이 필터는 원본 이미지를 슬라이딩하면서 지역적인 특징을 추출.
+> - **크기**: 필터의 크기는 일반적으로 3×3, 5x5, 7x7등이며, 사용자나 모델에 따라 조정 가능.
+> - **채널**: 필터의 채널 수는 입력 이미지의 채널 수와 같아야 함. 예를 들어, RGB 이미지는 3개의 채널을 가지므로  3×3×3 형태의 필터가 필요함.
+> - **개수**: 하나의 층에서 여러 개의 필터를 사용 가능. 각 필터는 다른 특징 (가장자리, 색상, 질감 등)을 추출.
+> - **연산**: 필터를 원본 이미지에 적용할 때는 'convolution' 연산을 수행. 이 연산은 필터의 요소와 이미지의 지역적인 부분과의 요소별 곱셈과 덧셈을 포함.
+
+### Feature Map
+> - **정의**: 필터를 원본 이미지에 적용하면 '특징 맵'이라는 출력을 얻습니다. 이는 원본 이미지의 지역적 특징을 나타내는 2D 배열.
+> - **크기**: 특징 맵의 크기는 필터의 크기, 스트라이드(stride), 패딩(padding)에 따라 결정됨.
+> - **다양성**: 하나의 CNN 층은 여러 개의 필터를 가질 수 있으므로, 이에 따라 여러 개의 특징 맵을 생성. 각 특징 맵은 다른 종류의 특징을 나타냄.
+> - **Pooling**: 특징 맵을 더 작은 크기로 축소하기도 함. 이를 'pooling'이라고 하며, 계산량을 줄이고 공간적인 정보를 요약하는 역할을 함.
+> - **활성화 함수**: 특징 맵에 활성화 함수를 적용하여 비선형성을 추가. 이는 모델이 복잡한 특징도 학습할 수 있게 해줌.
+
+### Size of Feature Map
+> - Output size = (Input size - Filter size + (2 * Padding)) / Stride + 1
+ 
+### Pooling
+#### Max Pooling
+> - **개념**: Max Pooling은 가장 널리 사용되는 풀링 방법. 작은 윈도우(예: 2×2)를 사용하여 특징 맵을 스캔하며, 그 윈도우 내에서 가장 큰 값을 선택하여 새로운 특징 맵을 생성.
+> - **장점**: 가장 뚜렷한 특징을 유지하면서 차원을 줄임.
+> - **단점**: 작은 값들은 무시되기 때문에 일부 정보가 손실될 수 있음.
+
+#### Average Pooling
+> - **개념**: Average Pooling은 작은 윈도우를 사용하여 특징 맵을 스캔하며, 그 윈도우 내의 모든 값의 평균을 취함.
+> - **장점**: 더 부드러운 특징 맵을 생성할 수 있음.
+> - **단점**: 중요한 특징이 무시될 가능성이 있음.
+
+#### Min Pooling
+> - **개념**: Min Pooling은 작은 윈도우 내에서 가장 작은 값을 선택함. Max Pooling과는 반대로 덜 뚜렷한 특징을 강조.
+> - **장점**: Outliers나 노이즈에 덜 민감.
+> - **단점**: 대부분의 실제 응용에서는 잘 사용되지 않음.
+
+#### Global Max/Average Pooling
+> - **개념**: 전체 특징 맵의 가장 큰 값(Max)이나 평균 값(Average)을 추출하여 그것을 특징으로 사용. 주로 CNN의 마지막 레이어에서 사용되어 고차원의 특징 맵을 낮은 차원으로 요약함.
+> - **장점**: Overfitting을 줄일 수 있음.
+> - **단점**: 너무 많은 정보가 손실될 수 있음.
+
+### LeNet-5
+> - **개념**: LeNet-5는 1998년 Yann LeCun에 의해 개발된 초기 컨볼루션 신경망(CNN) 중 하나. 주로 손글씨 숫자를 분류하는 문제에 사용됨.
+> - **특징**
+> > * 입력 레이어: 32x32x1 (흑백 이미지)
+> > * 컨볼루션 레이어: 두 개 (첫 번째는 6개의 5x5 필터, 두 번째는 16개의 5x5 필터)
+> > * 풀링 레이어: 두 개 (Average Pooling)
+> > * 완전 연결 레이어: 두 개
+> > * 출력 레이어: 소프트맥스 함수를 사용하여 10개의 클래스로 분류
+
+### AlexNet
+> - **개념**: AlexNet은 2012년 Alex Krizhevsky에 의해 개발되었고, ImageNet 대회에서 뛰어난 성능으로 주목을 받았습니다.
+> - **특징**
+> > * 입력 레이어: 227x227x3 (컬러 이미지)
+> > * 컨볼루션 레이어: 다섯 개
+> > * 풀링 레이어: 세 개 (Max Pooling)
+> > * 완전 연결 레이어: 세 개
+> > * 출력 레이어: 1,000개의 클래스로 분류
+> > * 활성화 함수: ReLU 사용
+> > * 정규화 기술: Dropout, Data Augmentation 등
+
 ## Chapter09. 언어지능 딥러닝
 ## Chapter10. AI모델 평가
 ## Chapter11. 웹 프로그래밍
