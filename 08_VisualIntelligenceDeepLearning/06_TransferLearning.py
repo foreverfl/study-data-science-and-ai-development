@@ -92,21 +92,25 @@ for path in files:
 # plt.tight_layout()
 # plt.show()
 
+# 이미지와 라벨 데이터를 numpy 배열로 변환
 images_arr = np.array(images)
 labels_arr = np.array(labels)
+
+# 데이터의 차원을 출력
 print('\nShape')
 print(images_arr.shape)
 print(labels_arr.shape)
 
+# 라벨의 종류를 출력
 print('\nlabels_arr')
 print(labels_arr)
-label_v = len(np.unique(labels_arr))
+label_v = len(np.unique(labels_arr))  # 라벨의 종류 개수
 
-# 라벨링
+# 라벨을 원-핫 인코딩
 y = to_categorical(labels, label_v)
 print(y[:3])
 
-# 데이터 나누기
+# 데이터를 클래스별로 분할
 temp = []
 init_v = 0
 
@@ -114,10 +118,12 @@ for v in name_cnt.values():
     temp.append((images[init_v:init_v+v], y[init_v:init_v+v]))
     init_v += v
 
+# temp 리스트를 순회하면서 데이터를 학습/검증/테스트 세트로 분할
 for i in range(len(temp)):
     x_to_array = np.array(temp[i][0])
     y_to_array = np.array(temp[i][1])
 
+    # 학습, 검증, 테스트 셋으로 분할
     train_x, test_x, train_y, test_y =\
         train_test_split(x_to_array, y_to_array,
                          test_size=0.2, random_state=2023)
@@ -125,18 +131,21 @@ for i in range(len(temp)):
     train_x, valid_x, train_y, valid_y =\
         train_test_split(train_x, train_y, test_size=0.2, random_state=2023)
 
+    # 첫 번째 클래스 데이터 처리
     if i == 0:
         first_tr_x, first_va_x, first_te_x = train_x.copy(), valid_x.copy(), test_x.copy()
         first_tr_y, first_va_y, first_te_y = train_y.copy(), valid_y.copy(), test_y.copy()
 
+    # 두 번째 클래스 데이터 처리
     elif i == 1:
         new_tr_x, new_tr_y = np.vstack(
-            (first_tr_x, train_x)), np.vstack((first_tr_y, train_y))
+            (first_tr_x, train_x)), np.vstack((first_tr_y, train_y))  # 배열을 세로로 쌓음
         new_va_x, new_va_y = np.vstack(
             (first_va_x, valid_x)), np.vstack((first_va_y, valid_y))
         new_te_x, new_te_y = np.vstack(
             (first_te_x, test_x)), np.vstack((first_te_y, test_y))
 
+    # 세 번째 클래스부터의 데이터 처리
     else:
         new_tr_x, new_tr_y = np.vstack(
             (new_tr_x, train_x)), np.vstack((new_tr_y, train_y))
@@ -145,7 +154,7 @@ for i in range(len(temp)):
         new_te_x, new_te_y = np.vstack(
             (new_te_x, test_x)), np.vstack((new_te_y, test_y))
 
-# 전처리 하지 않은 파일 따로 시각화 해두기
+# 전처리하지 않은 원본 데이터를 따로 저장
 train_xv, valid_xv, test_xv = train_x.copy(), valid_x.copy(), test_x.copy()
 
 # 데이터 전처리
@@ -181,9 +190,6 @@ for idx, layer in enumerate(model.layers):
     else:
         layer.trainable = True
 
-# 처음부터 학습시키는 것도 아니고,
-# 마지막 100개의 레이어만 튜닝 할 것이므로 learning rate를 조금 크게 잡아본다.
-
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'],
               optimizer=keras.optimizers.Adam(learning_rate=0.001))
 
@@ -195,8 +201,8 @@ lr_reduction = ReduceLROnPlateau(monitor='val_loss',
                                  )
 
 es = EarlyStopping(monitor='val_loss',
-                   min_delta=0,  # 개선되고 있다고 판단하기 위한 최소 변화량
-                   patience=8,  # 개선 없는 epoch 얼마나 기달려 줄거야
+                   min_delta=0,
+                   patience=8,
                    verbose=1,
                    restore_best_weights=True)
 
@@ -225,7 +231,6 @@ flow_trainIDG = trainIDG.flow(train_x, train_y)
 flow_validIDG = validIDG.flow(valid_x, valid_y)
 
 # .fit()
-# 데이터를 넣어서 학습시키자!
 hist = model.fit(flow_trainIDG, validation_data=flow_validIDG,
                  epochs=1000, verbose=1,
                  callbacks=[es, lr_reduction]
