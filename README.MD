@@ -471,7 +471,61 @@ model = CustomModel()
 > > * 활성화 함수: ReLU 사용
 > > * 정규화 기술: Dropout, Data Augmentation 등
 
+### Image Augmentation
+> - **개념**
+> > * 기존의 훈련 데이터를 다양한 방식으로 변형하여 데이터셋의 크기를 늘리는 기술. 이를 통해 모델이 overfitting을 피하고 일반화 성능을 향상시킬 수 있습니다. 여기에는 여러 가지 방법이 사용됨.
+> - **주요 기법**
+> > * **회전 (Rotation)**: 이미지를 일정 각도로 회전시킴.
+> > * **플립 (Flipping)**: 이미지를 수평 또는 수직으로 뒤집음.
+> > * **크기 조정 (Scaling)**: 이미지의 크기를 일정 비율로 늘리거나 줄임.
+> > * **이동 (Translation)**: 이미지를 상하 또는 좌우로 이동시킴.
+> > * **색상 조정 (Color Jittering)**: 색상, 채도, 밝기 등을 무작위로 변경함.
+> > * **비틀기 (Shear)**: 이미지를 일정한 각도로 비틀어 변형함.
+> > * **노이즈 추가 (Noise Injection)**: 이미지에 랜덤 노이즈를 추가.
+> - **사용하는 이유**
+> > * **데이터 증강**: 작은 데이터셋을 효과적으로 증강하여 데이터 부족 문제를 완화.
+> > * **과적합 방지**: 증강된 이미지를 통해 모델이 다양한 특성을 학습하여 과적합을 방지.
+> > * **일반화 성능 향상**: 다양한 변형을 통해 실제 세계의 다양한 경우를 더 잘 처리할 수 있음.
+> - **주의할 점**
+> > * 이미지 증강은 훈련 데이터에만 적용해야 함. 검증 또는 테스트 데이터에는 적용하지 않아야 일반화 성능을 올바르게 평가할 수 있음.
+> > * 너무 과한 증강은 모델이 잘못된 특성을 학습할 수 있으므로 적절한 수준에서 사용해야 함.
+
+### Transfer Learning
+#### Pretrained Model
+> - **개념**: Pretrained Model은 이미 대규모 데이터셋에 대해 훈련이 완료된 모델. 이 모델을 특성 추출기(feature extractor)로 사용하여 새로운 작업에 대한 특성을 추출.
+> - **작동 원리**
+> > 1. 기존에 훈련된 모델의 출력층을 제거.
+> > 2. 나머지 모델을 고정하고, 새로운 작업에 대한 데이터를 입력으로 사용하여 특성을 추출.
+> > 3. 이 특성을 사용해 새로운 작업을 위한 분류기(classifier)나 회귀기(regressor)를 훈련.
+> - **장점**
+> > * 적은 데이터로도 높은 성능을 얻을 수 있음.
+> > * 계산 시간이 절약됨.
+
+#### Fine-tuning
+> - **개념**: Pretrained Model의 구조를 그대로 가져와서, 일부 레이어를 미세 조정(Fine-tuning). 즉, 전체 모델이 새로운 데이터에 대해 다시 훈련되지만, 기존에 학습한 특성을 크게 잃지 않도록 학습률을 작게 설정.
+> - **작동 원리**
+> > 1. Pretrained Model을 로드.
+> > 2. 모델의 일부 또는 전체 레이어를 미세 조정을 위해 훈련 가능하도록 설정.
+> > 3. 새로운 작업의 데이터로 모델을 다시 훈련. 
+> - **장점**
+> > * Pretrained Model에서 제공하는 고수준 특성을 유지하면서 새로운 작업에 특화된 특성을 학습할 수 있음.
+> > * 일반적으로 높은 성능을 달성할 수 있음.
+
+### Object Detection
+> - **Bounding Box**: 이는 객체가 위치한 영역을 사각형으로 표시한 것. 일반적으로 (x_min, y_min, x_max, y_max) 또는 (x, y, width, height)와 같은 형태로 표현됨.
+> - **Class Classification**: 객체를 어떤 클래스에 속하는지를 분류하는 과정. 예를 들어, "개", "고양이", "자동차" 등이 될 수 있음.
+> - **Confidence Score**: 모델이 예측한 Bounding Box가 얼마나 정확한지에 대한 확률적인 점수. 일반적으로 0과 1 사이의 값으로 표현됨.
+> - **IoU (Intersection over Union)**: 두 Bounding Box의 교차 영역을 합친 영역으로 나눈 값. IoU는 0~1 사이의 값을 가지며, 높을수록 두 Bounding Box가 더 일치하는 것을 의미.
+> - **NMS (Non-Maximum Suppression)**: 여러 개의 Bounding Box 중 가장 확률이 높은 Bounding Box를 선택하고, 이와 많이 겹치는 나머지 Bounding Box를 제거하는 과정.
+> - **Precision, Recall, AP (Average Precision), mAP (mean Average Precision)**
+> > * **Precision**: True Positive/(True Positive + False Positive). 얼마나 많은 양성 예측이 실제로 양성인지를 측정.
+> > * **Recall**: True Positive/(True Positive + False Negative). 실제 양성 중 얼마나 많이 검출되었는지를 측정.
+> > * **AP**: Precision과 Recall의 관계를 측정하는 지표.
+> > * **mAP**: 여러 클래스에 대한 AP의 평균값. 객체 검출 모델의 성능을 종합적으로 평가하는 지표로 사용됨.
+> - **Annotation**: 학습 데이터에 대해 사람이나 다른 방법으로 객체의 위치와 클래스를 표시하는 과정. 보통 XML, JSON 형식으로 저장됨.
+
 ## Chapter09. 언어지능 딥러닝
+
 ## Chapter10. AI모델 평가
 ## Chapter11. 웹 프로그래밍
 ## Chapter12. 가상화 클라우드
