@@ -524,6 +524,9 @@ model = CustomModel()
 > > * **mAP**: 여러 클래스에 대한 AP의 평균값. 객체 검출 모델의 성능을 종합적으로 평가하는 지표로 사용됨.
 > - **Annotation**: 학습 데이터에 대해 사람이나 다른 방법으로 객체의 위치와 클래스를 표시하는 과정. 보통 XML, JSON 형식으로 저장됨.
 
+## YOLO 설정파일
+> - C:\Users\user\AppData\Roaming\Ultralytics
+
 ## Chapter09. 언어지능 딥러닝
 
 ## Chapter10. AI모델 평가

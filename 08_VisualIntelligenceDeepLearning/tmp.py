@@ -1,4 +1,7 @@
-import requests
+import urllib3
 
-response = requests.get('https://mystudymaterials.xyz/sitemap.xml')
-print(response.encoding)  # 여기서 UTF-8이 출력되면 UTF-8 인코딩입니다.
+http = urllib3.PoolManager()
+response = http.request(
+    'GET', 'https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt')
+
+print(response.status)
