@@ -4,13 +4,21 @@ from roboflow import Roboflow
 
 # 현재 파일의 경로 가져오기
 current_path = os.path.dirname(os.path.abspath(__file__))  # 현재 스크립트의 경로 가져오기
+secrets_path = os.path.join(current_path, 'secrets.txt')
+
+# secrets.txt 파일을 읽기 모드('r')로 열기
+with open(secrets_path, 'r') as f:
+    lines = f.readlines()
+    
+second_line = lines[0].strip()
+key, value = second_line.split('=')
 
 # 이미지 가져오기
 local_image_path = os.path.join(current_path, 'img_2', 'aoi', 'a8.jpg')
 print(local_image_path)
 
 # 모델 사용하기
-rf = Roboflow(api_key="xUgMhDZvqBrS2dkVaU33")
+rf = Roboflow(api_key=value)
 project = rf.workspace("pixiv1-qfbb1").project("anime_person_detection")
 dataset = project.version(3).download("yolov8")
 
