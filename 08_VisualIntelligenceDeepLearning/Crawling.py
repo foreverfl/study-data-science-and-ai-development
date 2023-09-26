@@ -36,7 +36,8 @@ def download_images(search_query, english_name, num_images, dest_folder):
             time.sleep(1)
 
         # 이미지 클릭하여 원본 이미지 로드
-        images = WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.rg_i.Q4LuWd')))
+        images = WebDriverWait(driver, 5).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, '.rg_i.Q4LuWd')))
         print(f"Found {len(images)} images.")
         count = 0
 
@@ -72,11 +73,11 @@ def download_images(search_query, english_name, num_images, dest_folder):
                     with open(f"{dest_folder}/{english_name}_{count + 1}.jpg", "wb") as f:
                         f.write(response.content)
                     count += 1
-                    
+
             except selenium.common.exceptions.ElementClickInterceptedException:
                 print("클릭 중 문제가 발생했습니다. 다음 이미지로 넘어갑니다.")
-                continue  # 다음 이미지로 넘어감                    
-                    
+                continue  # 다음 이미지로 넘어감
+
             except Exception as e:
                 print(f"이미지를 저장하는 도중 문제가 발생했습니다: {e}")
                 traceback.print_exc()
@@ -87,21 +88,21 @@ def download_images(search_query, english_name, num_images, dest_folder):
         print(f"{count}개의 이미지를 {dest_folder}에 저장했습니다.")
 
 
-# download_images('野菜', 'Yasai', 20, 'data')
+download_images('동전 지폐', 'money', 40, 'data')
 
-# 검색어와 영어 이름 쌍을 리스트로 관리
-search_queries_and_names = [
-    ('果物', 'Kudamono'),
-    ('肉', 'Niku'),
-    ('魚', 'Sakana'),
-    ('卵', 'Tamago'),
-    ('米', 'Kome'),
-    ('麺', 'Men'),
-    ('豆腐', 'Tofu'),
-    ('海鮮', 'Kaisen'),
-    ('野菜', 'Yasai'),
-]
+# # 검색어와 영어 이름 쌍을 리스트로 관리
+# search_queries_and_names = [
+#     ('果物', 'Kudamono'),
+#     ('肉', 'Niku'),
+#     ('魚', 'Sakana'),
+#     ('卵', 'Tamago'),
+#     ('米', 'Kome'),
+#     ('麺', 'Men'),
+#     ('豆腐', 'Tofu'),
+#     ('海鮮', 'Kaisen'),
+#     ('野菜', 'Yasai'),
+# ]
 
-# 각 검색어와 이름 쌍에 대해 download_images 함수 실행
-for search_query, english_name in search_queries_and_names:
-    download_images(search_query, english_name, 30, 'data')
+# # 각 검색어와 이름 쌍에 대해 download_images 함수 실행
+# for search_query, english_name in search_queries_and_names:
+#     download_images(search_query, english_name, 30, 'data')
