@@ -7,7 +7,7 @@ import os
 # os.path.dirname: 메소드는 주어진 경로의 디렉토리 이름을 반환
 # os.chdir(): 메소드는 작업 디렉토리를 변경하는 함수
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-current_directory = os.getcwd() # 변경된 작업 디렉토리 확인
+current_directory = os.getcwd()  # 변경된 작업 디렉토리 확인
 print(current_directory)
 
 with open('data.json', 'r', encoding='utf-8') as file:
@@ -17,19 +17,16 @@ print("데이터")
 print(json.dumps(data, indent=4, ensure_ascii=False))
 
 # Dictionary
-# 사전의 키 출력
-keys = data.keys()
-print("\n사전의 키")
+keys = data.keys()  # 딕셔너리의 키
+print("\n딕셔너리의 키")
 for key in keys:
     print(key)
 
-# 사전의 값 출력
-values = data.values()
-print("\n사전의 값")
+values = data.values()  # 딕셔너리의 값
+print("\n딕셔너리의 값")
 for value in values:
     print(value)
 
-# 사전의 키-값 쌍(튜플) 출력
-print("\n사전의 내용")
+print("\n사전의 내용")  # 사전의 키-값(튜플) 출력
 for key, value in data.items():
     print(f"{key}: {value}")
